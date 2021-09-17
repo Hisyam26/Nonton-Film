@@ -42,6 +42,15 @@ public class RealmHelper {
         RealmResults<Model> results = realm.where(Model.class).findAll();
         return results;
     }
+//    public boolean getAllMoviesByName(String name) {
+//        boolean cek = false;
+//        Model results = realm.where(Model.class).equalTo("judul", name).findFirst();
+//        realm.beginTransaction();
+//        if (results.getJudul() == null){
+//            cek=true;
+//        }
+//        return cek;
+//    }
 
     public List delete(Model movie){
         final RealmResults<Model> model = realm.where(Model.class).equalTo("tanggal", movie.getTanggal()).findAll();

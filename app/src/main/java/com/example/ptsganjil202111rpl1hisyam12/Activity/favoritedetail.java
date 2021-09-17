@@ -18,6 +18,7 @@ public class favoritedetail extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
+        getSupportActionBar().hide();
         tv_judul= (TextView) findViewById(R.id.tv_judul);
         tv_tanggalrilis = (TextView) findViewById(R.id.tv_tanggal);
         img = (ImageView) findViewById(R.id.img_gambar);

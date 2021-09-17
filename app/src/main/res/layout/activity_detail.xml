@@ -7,51 +7,67 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".Activity.DetailActivity">
-    <androidx.cardview.widget.CardView
-        android:id="@+id/c"
-        app:cardUseCompatPadding="true"
-        android:layout_marginTop="50dp"
-        android:layout_centerHorizontal="true"
-        app:cardCornerRadius="5dp"
-        app:cardElevation="10dp"
-        android:layout_width="150dp"
-        android:layout_height="220dp">
-        <ImageView
-            android:id="@+id/img_gambar"
-            android:src="@drawable/kawai"
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent">
+            <androidx.cardview.widget.CardView
+                android:id="@+id/c"
+                app:cardUseCompatPadding="true"
+                android:layout_marginTop="50dp"
+                android:layout_centerHorizontal="true"
+                app:cardCornerRadius="5dp"
+                app:cardElevation="10dp"
+                android:layout_width="150dp"
+                android:layout_height="220dp">
+                <ImageView
+                    android:id="@+id/img_gambar"
+                    android:src="@drawable/kawai"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
 
-    </androidx.cardview.widget.CardView>
-    <TextView
-        android:id="@+id/tv_judul"
-        android:textSize="25dp"
-        android:textStyle="bold"
-        android:layout_marginTop="20dp"
-        android:layout_below="@id/c"
-        android:layout_centerHorizontal="true"
-        android:text="judul"
-        android:fontFamily="@font/roboto"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-    <TextView
-        android:id="@+id/tv_tanggal"
-        android:textSize="20dp"
-        android:layout_below="@id/tv_judul"
-        android:layout_marginLeft="10dp"
-        android:text="tanggal rilis"
-        android:fontFamily="@font/coolvetica"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-    <TextView
-        android:id="@+id/tv_deskripsi"
-        android:textSize="20dp"
-        android:layout_below="@id/tv_tanggal"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="10dp"
-        android:text="deskripsi"
-        android:fontFamily="@font/geckolunch"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+            </androidx.cardview.widget.CardView>
+            <TextView
+                android:id="@+id/tv_judul"
+                android:textSize="25dp"
+                android:textStyle="bold"
+                android:layout_marginTop="20dp"
+                android:layout_below="@id/c"
+                android:layout_centerHorizontal="true"
+                android:text="judul"
+                android:fontFamily="@font/roboto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/tv_tanggal"
+                android:textSize="20dp"
+                android:layout_below="@id/tv_judul"
+                android:layout_marginLeft="10dp"
+                android:text="tanggal rilis"
+                android:fontFamily="@font/coolvetica"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/tv_deskripsi"
+                android:textSize="20dp"
+                android:layout_below="@id/tv_tanggal"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="10dp"
+                android:text="deskripsi"
+                android:fontFamily="@font/geckolunch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <ImageView
+                android:id="@+id/fav"
+                android:layout_marginRight="10dp"
+                android:layout_below="@id/tv_deskripsi"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/tombolfavorite"
+                android:layout_width="150dp"
+                android:layout_height="150dp"/>
+        </RelativeLayout>
+    </ScrollView>
 
 </RelativeLayout>

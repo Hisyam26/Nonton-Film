@@ -22,6 +22,7 @@ public class dasboardActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dasboard);
+        getSupportActionBar().hide();
         main = findViewById(R.id.main);
         favorite = findViewById(R.id.favorite);
         main.setOnClickListener(new View.OnClickListener() {

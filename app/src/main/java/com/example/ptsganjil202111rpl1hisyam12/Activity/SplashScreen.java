@@ -15,6 +15,7 @@ public class SplashScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_splash_screen);
+        getSupportActionBar().hide();
         final Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override

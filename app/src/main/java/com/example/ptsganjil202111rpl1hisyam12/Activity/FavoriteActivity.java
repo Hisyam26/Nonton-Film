@@ -6,7 +6,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.SearchView;
 import android.widget.TextView;
 
 import com.example.ptsganjil202111rpl1hisyam12.Adapter.adapter;
@@ -30,7 +34,7 @@ public class FavoriteActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_favorite);
-
+        getSupportActionBar().hide();
         RealmConfiguration configuration = new  RealmConfiguration.Builder().allowWritesOnUiThread(true).build();
         realm = Realm.getInstance(configuration);
         realmHelper = new RealmHelper(realm);
@@ -67,5 +71,4 @@ public class FavoriteActivity extends AppCompatActivity {
         recyclerView.setAdapter(Adapter);
 
     }
-
 }

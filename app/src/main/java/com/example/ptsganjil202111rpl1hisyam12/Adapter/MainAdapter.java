@@ -1,5 +1,6 @@
 package com.example.ptsganjil202111rpl1hisyam12.Adapter;
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,7 +24,9 @@ import java.util.List;
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
 
-public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
+import static android.content.ContentValues.TAG;
+
+public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder>  implements  Filterable{
     private  List<Model> model;
     private List<Model> models;
     Context context;
@@ -76,6 +79,12 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
                     model.get(position).setFavorite(false);
                     realmHelper.delete(model.get(position));
                 } else {
+//                    if (realmHelper.getAllMoviesByName(model.get(position).getJudul())){
+//                        Log.d("cek", "bisa add");
+//                    }else{
+//                        Log.d("cek", "data exist");
+//                    }
+//                    Log.d(TAG, "onClick: "+realmHelper.getAllMoviesByName(model.get(position).getJudul()));
                     model.get(position).setFavorite(true);
                     holder.favorite.setImageResource(R.drawable.favorite_red);
                     Toast.makeText(context, "Film ditambahkan ke list favorite kamu", Toast.LENGTH_SHORT).show();
@@ -112,4 +121,37 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
             });
         }
     }
+    @Override
+    public Filter getFilter() {
+        return dataListFilter;
+    }
+
+    private Filter dataListFilter = new Filter() {
+        @Override
+        protected FilterResults performFiltering(CharSequence charSequence) {
+            List<Model> filteredList = new ArrayList<>();
+            if (charSequence == null || charSequence.length() == 0) {
+                filteredList.addAll(models);
+            } else {
+                String filterPattern = charSequence.toString().toLowerCase().trim();
+                for (Model item : models) {
+                    if (item.getJudul().toLowerCase().contains(filterPattern)) {
+                        filteredList.add(item);
+                    }
+                }
+            }
+
+            FilterResults results = new FilterResults();
+            results.values = filteredList;
+            return results;
+        }
+
+        @Override
+        protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
+            model.clear();
+            model.addAll((List) filterResults.values);
+            notifyDataSetChanged();
+        }
+    };
+
 }

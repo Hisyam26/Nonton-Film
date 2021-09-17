@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,12 +8,11 @@
     tools:context=".Activity.dasboardActivity">
 
     <ImageView
-        android:layout_centerHorizontal="true"
+        android:layout_width="600dp"
+        android:layout_height="400dp"
         android:layout_alignParentTop="true"
         android:layout_marginTop="-50dp"
-        android:src="@drawable/shadow"
-        android:layout_width="600dp"
-        android:layout_height="400dp"/>
+        android:src="@drawable/shadow" />
 
     <androidx.appcompat.widget.SearchView
         android:id="@+id/searchView"
@@ -22,9 +22,11 @@
         android:layout_marginTop="30dp"
         android:background="@drawable/cari"
         app:iconifiedByDefault="false"
-        app:queryHint="Cari Film disini" />
+        app:queryHint="Hanya Hiasan! butuh iklan" />
 
     <androidx.cardview.widget.CardView
+
+        android:layout_centerHorizontal="true"
         app:cardCornerRadius="3dp"
         app:cardUseCompatPadding="true"
         app:cardElevation="10dp"
@@ -41,14 +43,15 @@
             android:layout_height="match_parent"/>
     </androidx.cardview.widget.CardView>
     <androidx.cardview.widget.CardView
+        android:layout_below="@+id/main"
+        android:layout_centerHorizontal="true"
         app:cardCornerRadius="3dp"
         app:cardUseCompatPadding="true"
         android:id="@+id/favorite"
         android:translationZ="10dp"
         app:cardElevation="10dp"
         android:layout_marginRight="20dp"
-        android:layout_marginTop="120dp"
-        android:layout_alignParentRight="true"
+        android:layout_marginTop="50dp"
         android:backgroundTint="@color/white"
         android:layout_width="150dp"
         android:layout_height="200dp">

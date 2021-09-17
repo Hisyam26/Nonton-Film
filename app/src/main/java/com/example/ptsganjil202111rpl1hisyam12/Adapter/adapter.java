@@ -8,6 +8,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -18,6 +20,8 @@ import com.example.ptsganjil202111rpl1hisyam12.Model.Model;
 import com.example.ptsganjil202111rpl1hisyam12.R;
 import com.example.ptsganjil202111rpl1hisyam12.ui.RealmHelper;
 import com.squareup.picasso.Picasso;
+
+import java.io.FileFilter;
 import java.util.ArrayList;
 import java.util.List;
 import javax.security.auth.callback.Callback;
@@ -25,13 +29,15 @@ import io.realm.Realm;
 import io.realm.RealmConfiguration;
 import io.realm.RealmResults;
 
-public class adapter extends RecyclerView.Adapter<adapter.ViewHolder> {
+public class adapter extends RecyclerView.Adapter<adapter.ViewHolder>{
     Callback callback;
     Realm realm;
     RealmHelper realmHelper;
     Context context;
-    public List<Model> dataList;
+    private List<Model> dataList;
+    private List<Model> m;
     boolean hapus = false;
+
     public interface Callback{
         void calling(int v);
     }
@@ -43,12 +49,13 @@ public class adapter extends RecyclerView.Adapter<adapter.ViewHolder> {
         this.callback = callback;
         this.dataList = dataList;
         this.context = context;
+        m = new ArrayList<>(dataList);
     }
     @NonNull
     @Override
     public adapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
-        View view = layoutInflater.inflate(R.layout.item, parent, false);
+        View view = layoutInflater.inflate(R.layout.item2, parent, false);
         return new ViewHolder(view);
     }
 

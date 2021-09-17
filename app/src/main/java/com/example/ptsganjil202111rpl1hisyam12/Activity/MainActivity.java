@@ -7,6 +7,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Adapter;
 import android.widget.SearchView;
@@ -16,6 +19,7 @@ import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import com.example.ptsganjil202111rpl1hisyam12.Adapter.MainAdapter;
+import com.example.ptsganjil202111rpl1hisyam12.Adapter.adapter;
 import com.example.ptsganjil202111rpl1hisyam12.Model.Model;
 import com.example.ptsganjil202111rpl1hisyam12.R;
 import com.example.ptsganjil202111rpl1hisyam12.ui.RealmHelper;
@@ -41,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
     String judul, deskripsi , gambar, tanggal, vote;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+        super.onCreate (savedInstanceState);
         setContentView(R.layout.activity_main);
         recyclerView = findViewById(R.id.recy);
         recyclerView.setHasFixedSize(true);
@@ -84,9 +88,12 @@ public class MainActivity extends AppCompatActivity {
                                     Model Operator = arrayList.get(v);
                                     Intent move = new Intent(getApplicationContext(), DetailActivity.class);
                                     move.putExtra("deskripsi", Operator.getDeskripsi());
+                                    move.putExtra("id", Operator.getId());
+                                    move.putExtra("favorite", Operator.getFavorite());
                                     move.putExtra("judul", Operator.getJudul());
                                     move.putExtra("tanggal", Operator.getTanggal());
                                     move.putExtra("gambar", Operator.getGambar());
+                                    move.putExtra("vote", Operator.getVote());
                                     startActivity(move);
                                 }
                             });
@@ -104,5 +111,26 @@ public class MainActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "Something error", Toast.LENGTH_SHORT).show();
                     }
                 });
+    }
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.cari,menu);
+        MenuItem item = menu.findItem(R.id.menuSearch);
+        android.widget.SearchView searchView = (android.widget.SearchView)item.getActionView();
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                main.getFilter().filter(newText);
+                return false;
+            }
+        });
+
+        return super.onCreateOptionsMenu(menu);
     }
 }
